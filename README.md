@@ -1,16 +1,25 @@
 # TDE-GTEE
+This repository provides the source code of our paper "A Hybrid Detection and Generation Framework with Separate Encoders for Event Extraction". (Received by EACL)
 
-# 论文的实现（被EACL拟接收）
-# 目前暂时开放baseline的实现，这是基于DY的简单复现，后续论文发表之后会开放完整版本
+Currently we provide a Baseline version of our implementation based on [GTEE-DYNPREF](https://aclanthology.org/2022.acl-long.358.pdf), and the code used in our paper will be coming soon after the paper is finalized for publication.
 
-# Datasets
-# 本文用到了两个数据集 ACE 和 ERE，由于保密协议，需要自行下载并解析
-### ACE
-论文中涉及了两个数据集ACE05-E和ACE05-E+，第一步先按照D++的方法得到D++格式的ACE05-E，然后按照Oneie的方法拿到ONEIE格式的ACE05-E和ACE05-E+
+## How to run
 
-### ERE
-论文中用的是xxx的数据切分方法
+### Preprocessing
+All datasets can be placed in data or elsewhere.
 
-# Train
-生成模型和分类模型
-`bash scripts train`
+#### ACE05-E: DyGIE++ to OneIE format
+`prepreocessing/process_dygiepp.py` from OneIE v0.4.8
+
+#### ACE05-E+: ACE2005 to OneIE format
+`preprocessing/process_ace.py` from OneIE v0.4.8
+
+#### ERE-EN: ERE to OneIE format
+`prepreocessing/process_ere.py` from OneIE v0.4.8
+
+
+## To Train
+
+To train baseline on different datasets, specify the configurations located in scripts/*.sh
+
+`bash scripts/train_base_generator.sh` and `bash scripts/train_base_IC.sh` can be executed in parallel, but `bash scripts/eval_base_IC.sh` needs to be executed first to get the file `az_file` used for `bash scripts/eval_base_generator.sh`
