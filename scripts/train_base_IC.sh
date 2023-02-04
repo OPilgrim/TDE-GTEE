@@ -1,11 +1,6 @@
 #!/bin/bash
-#SBATCH -n 1
-#SBATCH -c 8
-#SBATCH -p JX-GPU
-#SBATCH --mem 64G
-#SBATCH --gres=gpu:1
 
-srun python train_ic.py \
+python train_ic.py \
     --ckpt_name=IC-ace \
     --dataset=ACE \
     --train_file=data/ACE05-E/train.oneie.json \

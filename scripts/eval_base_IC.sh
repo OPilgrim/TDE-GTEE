@@ -1,6 +1,6 @@
 #!/bin/bash
 
-srun python train_ic.py \
+python train_ic.py \
     --ckpt_name=IC-ace-pred \
     --load_ckpt=checkpoints/IC-ace/epoch=0.ckpt \
     --dataset=ACE \
